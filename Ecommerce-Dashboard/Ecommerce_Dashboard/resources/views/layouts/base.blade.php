@@ -6,7 +6,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" integrity="sha512-q9QCHgpYTWCE6jgPjz3JbMx3tD5kN3cq4ArOo2x6L7PI4B/Tb4bUFnJ+QZ9GG5D/ODmKnuK4CwPVC3MnR2eAag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <title>Admin-Panel - لوحة القيادة</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -57,7 +60,7 @@
 
     <main>
     
-          <div class="row overflow-hidden">
+          <div class="row ">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">

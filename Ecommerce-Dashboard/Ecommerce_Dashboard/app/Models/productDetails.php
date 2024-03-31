@@ -13,8 +13,14 @@ class productDetails extends Model
         'color',
         'price',
         'qty',
+        'brand',
+        'discountPercentage',
+        'category',
+        'rate',
         'description',
         'productid',
+        'thumbnail',
+        'images',
   ];
 
 }

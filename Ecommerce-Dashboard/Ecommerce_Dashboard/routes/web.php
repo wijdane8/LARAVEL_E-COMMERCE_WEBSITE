@@ -5,7 +5,7 @@ use App\Http\Controllers\dashboardController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');
 Route::get('/dashbaord', function () {
     return view('Dashboard.index');
 })->name('dashboard');
@@ -20,5 +20,7 @@ Route::post('/dashbaord/update_details', [App\Http\Controllers\dashboardControll
 Route::get('/dashbaord/products/search', [App\Http\Controllers\dashboardController::class, 'search'])->name('search');
 Route::get('/logout', [App\Http\Controllers\dashboardController::class, 'logout'])->name('logout');
 Auth::routes();
+Route::get('/unpack', [App\Http\Controllers\dashboardController::class, 'unpack_DB'])->name('unpack_DB');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/view-products',[App\Http\Controllers\HomeController::class,'getProducts'])->name('products_page');

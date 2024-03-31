@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\productDetails;
+use App\Models\product;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class HomeController extends Controller
 {
@@ -24,5 +30,10 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+    public function getProducts()
+    {
+        $products_details=productDetails::all();
+        return view('products',['products'=>$products_details]);
     }
 }
