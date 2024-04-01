@@ -48,14 +48,14 @@
     <label >Price</label>
     <input type="number" name="price" class="form-control p-1 @error ('price') is-invalid @enderror" value="{{$row_product->price?: 0 }}" >
     <div class="invalid-feedback">
-      Please enter Number.
+      Please enter Number only.
     </div>   
   </div>
     <div class="col-6">
     <label >Quantity</label>
     <input type="number" name="qty" class="form-control p-1 @error ('qty') is-invalid @enderror"  value="{{$row_product->qty?: 0 }}">
     <div class="invalid-feedback">
-      Please enter Number.
+      Please enter Number only.
     </div> 
   </div>
 </div>
@@ -85,7 +85,7 @@
   <label >Discount Percentage</label>
   <input type="number" name="discountPercentage" class="form-control p-1 @error ('discountPercentage') is-invalid @enderror" value="{{$row_product->discountPercentage }}" >
   <div class="invalid-feedback">
-    Please enter Number.
+    Please enter Number only.
   </div> 
 </div>
 </div>
@@ -147,7 +147,7 @@
             <td>{{$row_product['discountPercentage']}}</td>
             <td class="col-3 overflow-hidden ">{{$row_product['description']}}</td>
             <td >
-              <a href="{{route('deleteProduct', ['id' => $row_product['productid']])}}"><i class="mx-3 fa fa-trash text-danger col" aria-hidden="true"><p>Delete</p></i></a>
+              <a href="#deleteProduct{{$row_product['productid']}}" data-bs-toggle="modal" data-bs-target="#deleteProduct{{$row_product['productid']}}"><i class="mx-3 fa fa-trash text-danger col" aria-hidden="true"><p>Delete</p></i></a>
               <a  data-bs-toggle="modal" href="#modalDetails{{$row_product['productid']}}" role="button" aria-expanded="false" aria-controls="modalDetails{{$row_product['productid']}}"><i class=" fa fa-plus text-success col" aria-hidden="true"><p>Add Details</p></i></a>
               
               @endforeach
@@ -160,12 +160,32 @@
       </div>
     </div>
   </div>
+  <!--delete product modal-->
+  <!-- Modal -->
+<div class="modal fade modal-sm" id="deleteProduct{{$row_product['productid']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="exampleModalLabel">Delete Product</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4 class="text-capitalize" >"{{$row_product['ProductName']}}"</h4><br> <p>will be deleted from the database. Continue?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="{{route('deleteProduct', ['id' => $row_product['productid']])}}" class="btn btn-danger" type="button">Submit</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/Delete Product Modal-->
   <div class="text-end mt-4 me-3">
   
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Add New Product
   </button><br/>
-  <a class="me-3" href="{{route('unpack_DB')}}">unpack jason  file</a>
+  <a class="me-3 " hidden href="{{route('unpack_DB')}}">unpack jason  file</a>
 </div>
   
   
@@ -191,7 +211,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Add Product</button>
         </form>
       </div>
     </div>

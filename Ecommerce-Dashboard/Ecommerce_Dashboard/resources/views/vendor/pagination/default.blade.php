@@ -1,8 +1,4 @@
 <style>
-    body{
-
-    background-color: #eee;
-}
 
 .wrapper{
 

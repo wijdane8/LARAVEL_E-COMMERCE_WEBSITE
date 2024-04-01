@@ -76,7 +76,18 @@
           
           @foreach($paginatedProducts as $product)
             <div class="row align-items-center bg-white border rounded mb-5">
-                <div class="col-md-2 mt-2 mb-2 "><img class="img-fluid img-responsive rounded product-image img-thumbnail product-thumbnail-image" src="{{ $product['thumbnail']}}"></div>
+                <div class="carousel slide col-md-2" data-ride="carousel" id="carousel">
+                    <div class="carousel-inner" role="listbox">
+                    @foreach(json_decode($product['images']) as $index => $image)
+                <div class="carousel-item active"><img class="img-thumbnail " src="{{$image}}" alt="Slide Image" loading="lazy"></div>
+                @endforeach
+            </div>
+            <div><a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel" role="button" data-slide="next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+            <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" class="active" ></li>
+              
+            </ol>`
+        </div>
                 <div class="col-md-8 mt-1 justify-content-center">
                     <div class="p-3 ms-5 mb-3">
                         <div class="row justify-content-around align-items-center  ">
@@ -120,6 +131,7 @@
                 </div>
                 <div class="align-items-center justify-content-center col-md-2 border-left mt-1  ">
                     <div class="d-flex flex-row align-items-center mt-2">
+                        
                         <h5 class="mr-1">Rating: <p class="badge bg-warning">{{$product['rate']}}</p></h5>
                     </div>
                     <div class="d-flex flex-row align-items-center">
@@ -163,4 +175,5 @@
 </nav>
 
           </div>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 @endsection
