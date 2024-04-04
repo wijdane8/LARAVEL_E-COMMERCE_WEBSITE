@@ -49,20 +49,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $userId = Auth::id();
-
-    // Retrieve cart items for the current user
-        $cartItems = Cart::where('userid', $userId)
-                     ->get();
-
-
+    
         $products_details = productDetails::take(4)->get();
-        return view('home',['products'=>$products_details,'cartItems'=>$cartItems]);
+        return view('home',['products'=>$products_details]);
     }
     
-    public function getProducts()
+    public function getProducts($category)
     {
-        $products_details=productDetails::all();
+       
+            if ($category && $category != 'all') {
+                $products_details = productDetails::where('category', $category)->get();
+            } else {
+                $products_details = productDetails::all(); // Retrieve all products if category is "all" or not specified
+            }
         return view('products',['products'=>$products_details]);
     }
 }

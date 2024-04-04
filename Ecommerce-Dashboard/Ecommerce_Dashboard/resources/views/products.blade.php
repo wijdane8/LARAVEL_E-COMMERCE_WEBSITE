@@ -27,6 +27,18 @@
     top: 10px;
     left: 0;
 }
+.category-lable{
+    color: #fff;
+    background: #7cddc2;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 25px;
+    padding: 0 20px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+
 .product-grid .product-links{
     padding: 0;
     margin: 0;
@@ -110,14 +122,30 @@
           @endphp
           
           <div class="row pt-5">
+            <div class="dropdown mb-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select Category
+                </button>
+                <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+                  <!-- Link to view all products -->
+                    <a class="dropdown-item" href="{{ route('products_page', ['category' => 'all']) }}">All Products</a>
+                    <!-- Other category links -->
+                    <a class="dropdown-item" href="{{ route('products_page', ['category' => 'Electronics']) }}">Electronics</a>
+                    <a class="dropdown-item" href="{{ route('products_page', ['category' => 'Fashion']) }}">Fashion</a>
+                    <a class="dropdown-item" href="{{ route('products_page', ['category' => 'Home & Garden']) }}">Home & Garden</a>
+                    <a class="dropdown-item" href="{{ route('products_page', ['category' => 'Beauty']) }}">Beauty</a>
+                    </div>
+                </div>
               @foreach($paginatedProducts as $product)
               <div class="col-md-4 col-sm-6 mb-3 ">
                   <div class="product-grid rounded-3">
             <div class="product-image border rounded-top">
-                <a href="#" class="image">
+                <a href="{{route('productDetails', ['id' => $product['id']]) }}" class="image">
                     <img src="{{$product['thumbnail'] }}">
                 </a>
                 <span class="product-discount-label">{{$product['discountPercentage'] }}%</span>
+                <span class="category-lable">{{$product['category'] }}</span>
+                
                 <ul class="product-links">
                     <li><a href="#"><i class="fa fa-search"></i></a></li>
                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -132,7 +160,7 @@
                 
             </div>
             <div class="product-content">
-                <h3 class="title"><a href="#">{{ $product['ProductName'] }}</a></h3>
+                <h3 class="title"><a href="{{route('productDetails', ['id' => $product['id']]) }}">{{ $product['ProductName'] }}</a></h3>
                 @if($product['discountPercentage']==0)<div class="price" >${{$product['price']}}</div>
                 @else
                 <div class="price">${{$product['price'] - ($product['price'] * ($product['discountPercentage'] / 100))}}<span>  ${{$product['price']}}</span></div>

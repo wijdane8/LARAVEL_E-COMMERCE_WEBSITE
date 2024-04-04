@@ -45,7 +45,7 @@ width: 100%;
 }
 
 .carousel-item {
-  height: 85vh;
+  height: 70vh;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -78,14 +78,9 @@ body{
                     <li class="nav-item active">
                         <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                     </li>
+                  
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Brand 1</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Brand 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('products_page')}}">Explore Products</a>
+                        <a class="nav-link" href="{{route('products_page', ['category' => 'all']) }}">Explore Products</a>
                     </li>
                     <li>
                       <div class="input-group">
@@ -114,7 +109,9 @@ body{
                             @else
                             <a class="link-secondary me-2" href="{{route('cart')}}">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span class="badge rounded-pill badge-notification bg-danger"> @yield('cartItems') </span>
+                                <span class="badge rounded-pill badge-notification bg-danger">
+                                     {{ config('global.cartItems') }} 
+                                    </span> 
                                    
                             </a>
                             
@@ -150,6 +147,9 @@ body{
                     </li>
                     <li>
                         <a class="dropdown-item" href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{route('dashboard')}}">Dashboard</a>
                     </li>
                     
                         

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dashboardController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 })->middleware('auth');
 Route::get('/dashbaord', function () {
     return view('Dashboard.index');
@@ -23,9 +23,10 @@ Auth::routes();
 Route::get('/unpack', [App\Http\Controllers\dashboardController::class, 'unpack_DB'])->name('unpack_DB');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/products',[App\Http\Controllers\HomeController::class,'getProducts'])->name('products_page');
+Route::get('/products/{category}',[App\Http\Controllers\HomeController::class,'getProducts'])->name('products_page');
 Route::get('/coffee',[App\Http\Controllers\HomeController::class,'getIcedCoffee'])->name('coffee');
 Route::get('/get-user',[App\Http\Controllers\HomeController::class,'GetUsersAPI'])->name('get-user');
 Route::get('/cart',[App\Http\Controllers\shopping::class,'getCart'])->name('cart');
 Route::post('/add-item/{id}',[App\Http\Controllers\shopping::class,'addCart'])->name('addCart');
 Route::get('/delete-item/{id}',[App\Http\Controllers\shopping::class,'deleteCart'])->name('deleteCart');
+Route::get('/show-product/{id}', [App\Http\Controllers\shopping::class, 'productDetails'])->name('productDetails');

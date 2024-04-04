@@ -47,9 +47,11 @@ class shopping extends Controller
                 'net' => $total, // Assuming net is the same as total for now
                 'userid' => auth()->id(), // Assuming you have user authentication and getting the current user's ID
             ]);
+            $cartItemsCount = Cart::where('userid', auth()->id())->count();
+            session(['cartItems' => $cartItemsCount]);
         }
 
-        return redirect('/products');
+        return redirect('/products/all');
     } catch (\Exception $e) {
         // Handle the exception (e.g., show an error message or redirect)
         return redirect()->back()->with('error', 'Failed to add product to cart: ' . $e->getMessage());
@@ -93,4 +95,18 @@ public function getCart()
 
     return view('shopping.cart',['products'=>$cartItems]);
 }
+public function productDetails($id)
+    {
+        try {
+            // Fetch the product from the database by its ID
+            $product = productDetails::findOrFail($id);
+
+            // Pass the product data to the view
+            return view('shopping.productDetails',['product'=>$product] );
+        } catch (\Exception $e) {
+            // Handle the exception (e.g., show an error message or redirect)
+            return redirect()->back()->with('error', 'Product not found: ' . $e->getMessage());
+        }
+    }
+  
 }

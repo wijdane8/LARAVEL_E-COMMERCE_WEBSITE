@@ -1,9 +1,5 @@
 @extends('layouts.app')
-@section('cartItems')
-<span class="badge rounded-pill badge-notification bg-danger">
-{{ $cartItems->count() }}
-</span>
-@endsection
+
 @section('content')
         @section('header')
             <div id="carouselExampleIndicators" class="carousel slide my-carousel my-carousel" data-ride="carousel">
@@ -13,7 +9,7 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
               </ol>
               <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active row" style="background-color: rgb(239, 245, 224);">
+                <div class="carousel-item active row" style="background-color: rgb(224, 245, 239);">
                     <div class="row " >
                         <div class="col-5 mt-5">
                             <h1 class="text-success text-center animate__animated animate__pulse animate__infinite" style="font-size:10rem;font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: 400;">
@@ -43,7 +39,16 @@
                     </div>
                 </div>
                 <div class="carousel-item pt-5 ps-5" style="background-color: aliceblue;">
-                    <img src="/images/bag-png-33948.png" alt="" height="300" class="mt-5 ms-5">
+                    <div class="row">
+                    <img src="/images/bag-png-33948.png" alt="" class="col mt-5 ms-5">
+                    <div class="col pt-5 mt-5">
+                        <h1 class="text-center " style="font-size:2rem;font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight:bold;color: rgb(213, 26, 26);">
+                            Descover out Products
+                        </h1>
+                        <div><a href="" class="pill">ooo</a></div>
+                    </div>
+                    </div>
+                </div>
                 </div>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -80,7 +85,7 @@
             }
             .product-grid .product-discount-label{
                 color: #fff;
-                background: #A5BA8D;
+                background: #f37b7b;
                 font-size: 13px;
                 font-weight: 600;
                 line-height: 25px;
@@ -89,6 +94,18 @@
                 top: 10px;
                 left: 0;
             }
+            .category-lable{
+                color: #fff;
+                background: #97dcc8;
+                font-size: 13px;
+                font-weight: 600;
+                line-height: 25px;
+                padding: 0 20px;
+                position: absolute;
+                top: 10px;
+                right: 0;
+            }
+            
             .product-grid .product-links{
                 padding: 0;
                 margin: 0;
@@ -100,7 +117,7 @@
             }
             .product-grid:hover .product-links{ right: 10px; }
             .product-grid .product-links li a{
-                color: #333;
+                color: #ed3636;
                 background: transparent;
                 font-size: 17px;
                 line-height: 38px;
@@ -114,11 +131,12 @@
             .product-grid .product-links li:last-child a{ border-bottom: 1px solid #333; }
             .product-grid .product-links li a:hover{
                 color: #fff;
-                background: #333;
+                background: #ed3636;
             }
             .product-grid .add-to-cart{
-                background: #A5BA8D;
+                background: #93d4be;
                 color: #fff;
+                text-decoration: none;
                 font-size: 16px;
                 text-transform: uppercase;
                 letter-spacing: 2px;
@@ -134,7 +152,7 @@
             .product-grid .product-content{
                 background: #fff;
                 padding: 15px;
-                box-shadow: 0 0 0 5px rgba(0,0,0,0.1) inset;
+                box-shadow: 0 0 0 2px rgba(0,0,0,0.1) inset;
             }
             .product-grid .title{
                 font-size: 16px;
@@ -143,17 +161,18 @@
                 margin: 0 0 7px;
             }
             .product-grid .title a{
-                color: #777;
+                color: #878686;
                 transition: all 0.3s ease 0s;
+                text-decoration: none;
             }
-            .product-grid .title a:hover{ color: #a5ba8d; }
+            .product-grid .title a:hover{ color: #7ed4ac; }
             .product-grid .price{
                 color: #0d0d0d;
                 font-size: 14px;
                 font-weight: 600;
             }
             .product-grid .price span{
-                color: #888;
+                color: #ff7a7a;
                 font-size: 13px;
                 font-weight: 400;
                 text-decoration: line-through;
@@ -161,17 +180,17 @@
             @media screen and (max-width: 990px){
                 .product-grid{ margin-bottom: 30px; }
             }</style>
-            
                       
             <div class="col-12 row pt-5 ">
                           @foreach($products as $product)
                           <div class="col-md-3 col-sm-6 mb-3">
                               <div class="product-grid">
                         <div class="product-image border">
-                            <a href="#" class="image">
+                            <a href="{{route('productDetails', ['id' => $product['id']]) }}" class="image">
                                 <img src="{{$product['thumbnail'] }}">
                             </a>
                             <span class="product-discount-label">{{$product['discountPercentage'] }}%</span>
+                            <span class="category-lable">{{$product['category'] }}</span>
                             <ul class="product-links">
                                 <li><a href="#"><i class="fa fa-search"></i></a></li>
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -186,7 +205,7 @@
                             
                         </div>
                         <div class="product-content">
-                            <h3 class="title"><a href="#">{{ $product['ProductName'] }}</a></h3>
+                            <h3 class="title"><a href="{{route('productDetails', ['id' => $product['id']]) }}">{{ $product['ProductName'] }}</a></h3>
                             @if($product['discountPercentage']==0)<div class="price" >${{$product['price']}}</div>
                             @else
                             <div class="price">${{$product['price'] - ($product['price'] * ($product['discountPercentage'] / 100))}}<span>  ${{$product['price']}}</span></div>
