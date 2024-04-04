@@ -64,9 +64,9 @@ body{
 </head>
 <body>
         <!-- Navbar -->
-        <header class="mb-5 d-flex">
-            <nav class=" my-nav navbar navbar-light navbar-expand-lg ">
-              <div class="container">
+        <header class="mb-5 d-flex ">
+            <nav class=" my-nav navbar navbar-light navbar-expand-lg transparent-navbar ">
+              <div class="container ">
         
         
               <a class="navbar-brand" href="#">STORE</a>
@@ -99,22 +99,34 @@ body{
                         <!-- Right elements -->
                         <div class="d-flex align-items-center mt-2 ms-2">
                             <!-- Icon -->
-                            <a class="link-secondary me-3" href="#">
+                            @guest
+                            @if (Route::has('login'))
+                            <li>
+                                <a class="dropdown-item mt-2 ms-2" href="{{ route('login') }}"> {{ __('Login') }} </a>
+                            </li>
+                            @endif
+                            
+                            @if (Route::has('register'))
+                            <li>
+                                <a class="dropdown-item mt-2 ms-2" href="{{ route('register') }}"> {{ __('Register') }} </a>
+                            </li>
+                            @endif
+                            @else
+                            <a class="link-secondary me-2" href="{{route('cart')}}">
                                 <i class="fa fa-shopping-cart"></i>
+                                <span class="badge rounded-pill badge-notification bg-danger"> @yield('cartItems') </span>
+                                   
                             </a>
                             
                             <!-- Notifications -->
-                            <div class="d-flex align-items-center ms-2">
-                                <a class="link-secondary me-3" >
+                                <a class="link-secondary me-2" href="#"" >
                                     <i class="fa fa-bell"></i>
-                                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
-                                    
+                                     
                                 </a>
-                            </div>
                     <!-- Avatar -->
                     <div class="dropdown">
                         <a
-                        class="dropdown-toggle align-items-center "
+                        class="dropdown-toggle align-items-center  "
                         href="#"
                         id="navbarDropdownMenuAvatar"
                         role="button"
@@ -127,7 +139,8 @@ body{
                         height="25"
                         alt="Black and White Portrait of a Man"
                         loading="lazy"
-                        />
+                        />  
+                        {{ Auth::user()->name }}
                     </a>
                     <ul
                     class="dropdown-menu "
@@ -138,11 +151,15 @@ body{
                     <li>
                         <a class="dropdown-item" href="#">Settings</a>
                     </li>
-                    <li>
+                    
+                        
+                            <li>
+                                
                         <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
                     </li>
                 </ul>
             </div>
+            @endguest
         </div>
     </li>
                 </ul>
@@ -240,8 +257,8 @@ section .section-title {
 
 </style>
 <!-- Footer -->
-<section id="footer">
-    <div class="container">
+<section id="footer" class="mt-5">
+    <div class="container ">
         <div class="row text-center text-xs-center text-sm-left text-md-left">
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <h5>Quick links</h5>

@@ -26,3 +26,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/products',[App\Http\Controllers\HomeController::class,'getProducts'])->name('products_page');
 Route::get('/coffee',[App\Http\Controllers\HomeController::class,'getIcedCoffee'])->name('coffee');
 Route::get('/get-user',[App\Http\Controllers\HomeController::class,'GetUsersAPI'])->name('get-user');
+Route::get('/cart',[App\Http\Controllers\shopping::class,'getCart'])->name('cart');
+Route::post('/add-item/{id}',[App\Http\Controllers\shopping::class,'addCart'])->name('addCart');
+Route::get('/delete-item/{id}',[App\Http\Controllers\shopping::class,'deleteCart'])->name('deleteCart');

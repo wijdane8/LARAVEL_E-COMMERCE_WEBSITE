@@ -1,5 +1,9 @@
 @extends('layouts.app')
-
+@section('cartItems')
+<span class="badge rounded-pill badge-notification bg-danger">
+{{ $cartItems->count() }}
+</span>
+@endsection
 @section('content')
         @section('header')
             <div id="carouselExampleIndicators" class="carousel slide my-carousel my-carousel" data-ride="carousel">
@@ -173,7 +177,13 @@
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-random"></i></a></li>
                             </ul>
-                            <a href="" class="add-to-cart">Add to Cart</a>
+                            <form action="{{ route('addCart', ['id' => $product['id']]) }}" method="post" id="add-to-cart-form-{{$product['id']}}">
+                                @csrf
+                                <input type="hidden" name="qty" value="1">
+                                <input type="hidden" name="id" value="{{$product['id']}}">
+                            </form>
+                            <a class="add-to-cart" href="#" onclick="document.getElementById('add-to-cart-form-{{$product['id']}}').submit(); return false;">Add to Cart</a>
+                            
                         </div>
                         <div class="product-content">
                             <h3 class="title"><a href="#">{{ $product['ProductName'] }}</a></h3>

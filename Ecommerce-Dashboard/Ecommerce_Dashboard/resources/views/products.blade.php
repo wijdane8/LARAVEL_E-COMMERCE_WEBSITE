@@ -18,7 +18,7 @@
 }
 .product-grid .product-discount-label{
     color: #fff;
-    background: #A5BA8D;
+    background: #f37b7b;
     font-size: 13px;
     font-weight: 600;
     line-height: 25px;
@@ -38,7 +38,7 @@
 }
 .product-grid:hover .product-links{ right: 10px; }
 .product-grid .product-links li a{
-    color: #333;
+    color: #ed3636;
     background: transparent;
     font-size: 17px;
     line-height: 38px;
@@ -52,11 +52,12 @@
 .product-grid .product-links li:last-child a{ border-bottom: 1px solid #333; }
 .product-grid .product-links li a:hover{
     color: #fff;
-    background: #333;
+    background: #ed3636;
 }
 .product-grid .add-to-cart{
-    background: #A5BA8D;
+    background: #93d4be;
     color: #fff;
+    text-decoration: none;
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -72,7 +73,7 @@
 .product-grid .product-content{
     background: #fff;
     padding: 15px;
-    box-shadow: 0 0 0 5px rgba(0,0,0,0.1) inset;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1) inset;
 }
 .product-grid .title{
     font-size: 16px;
@@ -81,17 +82,18 @@
     margin: 0 0 7px;
 }
 .product-grid .title a{
-    color: #777;
+    color: #878686;
     transition: all 0.3s ease 0s;
+    text-decoration: none;
 }
-.product-grid .title a:hover{ color: #a5ba8d; }
+.product-grid .title a:hover{ color: #7ed4ac; }
 .product-grid .price{
     color: #0d0d0d;
     font-size: 14px;
     font-weight: 600;
 }
 .product-grid .price span{
-    color: #888;
+    color: #ff7a7a;
     font-size: 13px;
     font-weight: 400;
     text-decoration: line-through;
@@ -109,9 +111,9 @@
           
           <div class="row pt-5">
               @foreach($paginatedProducts as $product)
-              <div class="col-md-4 col-sm-6 mb-3">
-                  <div class="product-grid">
-            <div class="product-image border">
+              <div class="col-md-4 col-sm-6 mb-3 ">
+                  <div class="product-grid rounded-3">
+            <div class="product-image border rounded-top">
                 <a href="#" class="image">
                     <img src="{{$product['thumbnail'] }}">
                 </a>
@@ -121,7 +123,13 @@
                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                     <li><a href="#"><i class="fa fa-random"></i></a></li>
                 </ul>
-                <a href="" class="add-to-cart">Add to Cart</a>
+                <form action="{{ route('addCart', ['id' => $product['id']]) }}" method="post" id="add-to-cart-form-{{$product['id']}}">
+                    @csrf
+                    <input type="hidden" name="qty" value="1">
+                    <input type="hidden" name="id" value="{{$product['id']}}">
+                </form>
+                <a class="add-to-cart" href="#" onclick="document.getElementById('add-to-cart-form-{{$product['id']}}').submit(); return false;">Add to Cart</a>
+                
             </div>
             <div class="product-content">
                 <h3 class="title"><a href="#">{{ $product['ProductName'] }}</a></h3>

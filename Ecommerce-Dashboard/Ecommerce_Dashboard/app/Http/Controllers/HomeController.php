@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\productDetails;
 use App\Models\product;
+use App\Models\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -48,9 +49,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $userId = Auth::id();
+
+    // Retrieve cart items for the current user
+        $cartItems = Cart::where('userid', $userId)
+                     ->get();
+
+
         $products_details = productDetails::take(4)->get();
-        return view('home',['products'=>$products_details]);
+        return view('home',['products'=>$products_details,'cartItems'=>$cartItems]);
     }
+    
     public function getProducts()
     {
         $products_details=productDetails::all();
