@@ -77,7 +77,6 @@ To install and run this project locally, follow these steps:
 - Laravel - The PHP framework used for backend development
 - MySQL - The relational database management system
 - Bootstrap - The CSS framework for styling
-- Vue.js - The JavaScript framework for frontend interactivity
 
 ## Authors
 
@@ -87,11 +86,15 @@ To install and run this project locally, follow these steps:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## Acknowledgment
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc.
+I would like to express my sincere gratitude to Tuwaiq Academy for providing me with this invaluable opportunity to enhance my skills and knowledge in software development.
+
+Special thanks to Eng. Saad Aldbai for his guidance, mentorship, and unwavering support throughout this journey.
+
+I am also grateful to my colleagues who have inspired me to be more productive with their kindness and assistance. Their encouragement and collaboration have been instrumental in my growth and development.
+
+
 # License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) - see the [LICENSE.txt](LICENSE.txt) file for details.
