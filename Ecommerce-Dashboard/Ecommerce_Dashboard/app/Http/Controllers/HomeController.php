@@ -8,6 +8,7 @@ use App\Models\product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 
 
 class HomeController extends Controller
@@ -22,6 +23,24 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    public function getIcedCoffee()
+    {
+        $response=HTTP::get('https://api.sampleapis.com/coffee/iced');
+        return view('coffee',['data' => $response->object()]);
+    }
+    public function GetUsersAPI()
+    {
+      $apiURL = 'https://jsonplaceholder.typicode.com/users';
+      $headers = [
+        'Content-Type' => 'application/json',
+      ];
+      $response = Http::withHeaders($headers)->get($apiURL, [
+        'email' => 'Sincere@april.biz',
+    ]);
+    $data = $response->json();
+    
+    return Response()->json($data);
+    }
     /**
      * Show the application dashboard.
      *
@@ -29,7 +48,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $products_details = productDetails::take(4)->get();
+        return view('home',['products'=>$products_details]);
     }
     public function getProducts()
     {

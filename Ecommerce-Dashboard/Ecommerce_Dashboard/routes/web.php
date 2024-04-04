@@ -23,4 +23,6 @@ Auth::routes();
 Route::get('/unpack', [App\Http\Controllers\dashboardController::class, 'unpack_DB'])->name('unpack_DB');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/view-products',[App\Http\Controllers\HomeController::class,'getProducts'])->name('products_page');
+Route::get('/products',[App\Http\Controllers\HomeController::class,'getProducts'])->name('products_page');
+Route::get('/coffee',[App\Http\Controllers\HomeController::class,'getIcedCoffee'])->name('coffee');
+Route::get('/get-user',[App\Http\Controllers\HomeController::class,'GetUsersAPI'])->name('get-user');
