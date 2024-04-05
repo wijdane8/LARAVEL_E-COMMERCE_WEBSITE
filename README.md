@@ -82,10 +82,6 @@ To install and run this project locally, follow these steps:
 
 - wijdane8 (https://github.com/wijdane8) - Initial work
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgment
 
 I would like to express my sincere gratitude to Tuwaiq Academy for providing me with this invaluable opportunity to enhance my skills and knowledge in software development.
