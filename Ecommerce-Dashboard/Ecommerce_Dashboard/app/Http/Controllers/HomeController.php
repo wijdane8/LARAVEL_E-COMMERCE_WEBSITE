@@ -22,6 +22,8 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+
     }
 
     public function getIcedCoffee()
@@ -49,7 +51,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-    
         $products_details = productDetails::take(4)->get();
         return view('home',['products'=>$products_details]);
     }

@@ -110,13 +110,13 @@ body{
                             <a class="link-secondary me-2" href="{{route('cart')}}">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span class="badge rounded-pill badge-notification bg-danger">
-                                     {{ config('global.cartItems') }} 
+                                    {{ $carts->count() }} 
                                     </span> 
                                    
                             </a>
                             
                             <!-- Notifications -->
-                                <a class="link-secondary me-2" href="#"" >
+                                <a class="link-secondary me-2" href="#" >
                                     <i class="fa fa-bell"></i>
                                      
                                 </a>

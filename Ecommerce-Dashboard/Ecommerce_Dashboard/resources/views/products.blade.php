@@ -123,7 +123,7 @@
           
           <div class="row pt-5">
             <div class="dropdown mb-3">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle shadow-sm" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Select Category
                 </button>
                 <div class="dropdown-menu" aria-labelledby="categoryDropdown">
@@ -143,8 +143,8 @@
                 <a href="{{route('productDetails', ['id' => $product['id']]) }}" class="image">
                     <img src="{{$product['thumbnail'] }}">
                 </a>
-                <span class="product-discount-label">{{$product['discountPercentage'] }}%</span>
-                <span class="category-lable">{{$product['category'] }}</span>
+                <span class="product-discount-label shadow-sm rounded-end-1">{{$product['discountPercentage'] }}%</span>
+                <span class="category-lable shadow-sm rounded-start-1">{{$product['category'] }}</span>
                 
                 <ul class="product-links">
                     <li><a href="#"><i class="fa fa-search"></i></a></li>

@@ -29,43 +29,43 @@ category
         <a href="" class=" text-decoration-none">
     <span class="material-symbols-outlined">
 category
-</span><h5>Products</h5></a>
+</span><h5>Sales</h5></a>
     </div>
     <div class="col-3 col bg-white rounded text-center shadow-sm m-3 py-3 border hover-scale">
         <a href="" class=" text-decoration-none">
     <span class="material-symbols-outlined">
 category
-</span><h5>Products</h5></a>
+</span><h5>Orders</h5></a>
     </div>
     <div class="col-3 col bg-white rounded text-center m-3 py-3 shadow-sm border hover-scale">
         <a href="" class=" text-decoration-none">
     <span class="material-symbols-outlined">
 category
-</span><h5>Products</h5></a>
+</span><h5>--</h5></a>
     </div>
     <div class="col-3 col bg-white rounded text-center m-3 py-3 shadow-sm border hover-scale">
         <a href="" class=" text-decoration-none">
     <span class="material-symbols-outlined">
 category
-</span><h5>Products</h5></a>
+</span><h5>--</h5></a>
     </div>
     <div class="col-3 col bg-white rounded text-center m-3 py-3 shadow-sm border hover-scale">
         <a href="" class=" text-decoration-none">
     <span class="material-symbols-outlined">
 category
-</span><h5>Products</h5></a>
+</span><h5>--</h5></a>
     </div>
     <div class="col-3 col bg-white rounded text-center m-3 py-3 shadow-sm border hover-scale">
         <a href="" class=" text-decoration-none">
     <span class="material-symbols-outlined">
 category
-</span><h5>Products</h5></a>
+</span><h5>--</h5></a>
     </div>
     <div class="col-3 col bg-white rounded shadow-sm text-center m-3 py-3 border hover-scale">
         <a href="" class=" text-decoration-none">
     <span class="material-symbols-outlined">
 category
-</span><h5>Products</h5></a>
+</span><h5>--</h5></a>
     </div>
 </div>
 @endsection

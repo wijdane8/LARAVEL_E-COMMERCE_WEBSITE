@@ -19,8 +19,8 @@
                         <div class="col pt-5 mt-5">
                             <h1 class="pt-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h1>
                             <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam repellat, magnam ratione ullam quibusdam repudiandae assumenda reiciendis! Commodi hic veritatis quod officia quis incidunt suscipit nam, voluptate ea dicta at!</p>
-                            <div class="text-end p-5">
-                            <button class="btn btn-danger mt-5 ">SHOP NOW!</button>
+                            <div class="text-start">
+                            <button class="btn btn-danger mt-5">SHOP NOW!</button>
                         </div>
                         </div>
                     </div>
@@ -189,8 +189,8 @@
                             <a href="{{route('productDetails', ['id' => $product['id']]) }}" class="image">
                                 <img src="{{$product['thumbnail'] }}">
                             </a>
-                            <span class="product-discount-label">{{$product['discountPercentage'] }}%</span>
-                            <span class="category-lable">{{$product['category'] }}</span>
+                            <span class="product-discount-label shadow-sm rounded-end-1">{{$product['discountPercentage'] }}%</span>
+                            <span class="category-lable shadow-sm rounded-start-1">{{$product['category'] }}</span>
                             <ul class="product-links">
                                 <li><a href="#"><i class="fa fa-search"></i></a></li>
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
